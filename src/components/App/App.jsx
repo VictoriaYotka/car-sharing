@@ -4,8 +4,17 @@ import Cars from "../../pages/Cars/Cars";
 import Favorites from "../../pages/Favorites/Favorites";
 import SharedLayout from "../../pages/SharedLayout/SharedLayout";
 import NotFound from "../../pages/Not found/NotFound";
+import { useEffect } from "react";
+import { getAll } from "../../redux/operations/carsOperations";
+import { useDispatch } from "react-redux";
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAll());
+  }, [dispatch]);
+
   return (
     <>
       <Routes>

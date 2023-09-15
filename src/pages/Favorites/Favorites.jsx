@@ -1,5 +1,8 @@
+import { selectFavoriteCars } from "../../redux/selectors/selectors";
+import CarsList from "../../components/CarsList/CarsList";
+
 const Favorites = () => {
-  return <div>Favorites</div>;
+  return <CarsList selector={selectFavoriteCars} />;
 };
 
 export default Favorites;

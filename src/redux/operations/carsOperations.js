@@ -15,10 +15,9 @@ const getAll = createAsyncThunk(
 
 const updateFavorite = createAsyncThunk(
   "cars/updateFavorite",
-  async (id, { rejectWithValue }) => {
+  async (body, { rejectWithValue }) => {
     try {
-      const { data } = await instance.put(`cars/${id}`);
-
+      const { data } = await instance.put(`cars/${body.id}`, body);
       return data;
     } catch (e) {
       return rejectWithValue(e.message);

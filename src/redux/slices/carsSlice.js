@@ -24,8 +24,8 @@ const carsSlice = createSlice({
         handleFullfilled(state);
       })
       .addCase(updateFavorite.fulfilled, (state, { payload }) => {
-        // !!!!!!!!!!!!! REFACTOR!!!!!!!!!!!
-        state.favorite = payload;
+        const carIndex = state.items.findIndex((car) => car.id === payload.id);
+        state.items.splice(carIndex, 1, payload);
         handleFullfilled(state);
       })
       .addMatcher((action) => action.type.endsWith("/pending"), handlePending)

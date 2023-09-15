@@ -6,8 +6,6 @@ const getAll = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const { data } = await instance.get("cars");
-      console.log(data);
-
       return data;
     } catch (e) {
       return rejectWithValue(e.message);

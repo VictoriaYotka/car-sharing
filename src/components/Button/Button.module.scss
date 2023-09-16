@@ -1,0 +1,19 @@
+@import "../../scss/";
+
+.button {
+  padding: 12px 98px;
+  color: $lightColor;
+  background-color: $accentColor;
+  border-radius: 12px;
+  font-family: $mainFont;
+  font-size: 14px;
+  font-weight: $fontWeightSemiBold;
+  line-height: 20px;
+
+  transition: background-color $transitionDuration $transitionTimingFunction;
+
+  &:hover,
+  &:focus {
+    background-color: $hoverAccentColor;
+  }
+}

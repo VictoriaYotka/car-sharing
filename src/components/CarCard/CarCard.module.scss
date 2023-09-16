@@ -1,7 +1,10 @@
 @import "../../scss/";
 
 .product_card {
+  display: flex;
+  flex-direction: column;
   width: 274px;
+  height: 426px;
 
   // @include tablet {
 
@@ -28,7 +31,7 @@
 .icon {
   width: 18px;
   height: 18px;
-  stroke: $lightColor;
+  stroke: $lightTransparentColor;
 
   transition: stroke $transitionDuration $transitionTimingFunction,
     fill $transitionDuration $transitionTimingFunction;
@@ -62,6 +65,7 @@
   display: flex;
   justify-content: space-between;
   gap: 8px;
+  margin-bottom: 8px;
 }
 
 .heading {
@@ -81,6 +85,7 @@
 }
 
 .car_info {
+  margin-bottom: auto;
   color: $secondaryFontColor;
   line-height: 18px;
 }

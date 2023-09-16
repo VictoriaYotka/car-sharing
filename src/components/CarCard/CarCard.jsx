@@ -4,6 +4,7 @@ import icons from "../../images/icons.svg";
 import css from "./CarCard.module.scss";
 import PropTypes from "prop-types";
 import { useState } from "react";
+import Button from "../Button/Button";
 
 const CarCard = ({
   selector,
@@ -28,6 +29,7 @@ const CarCard = ({
   const handleClick = (e) => {
     const openModalButton = e.target.name === "openModal";
     const updateFavoriteButton =
+      e.target.closest("button") &&
       e.target.closest("button").name === "updateFavorite";
     if (openModalButton || updateFavoriteButton) {
       const { id } = e.target.closest("li");
@@ -82,7 +84,8 @@ const CarCard = ({
         <span className={css.car_info_point}>{mileage}</span>
         <span className={css.car_info_point}>{functionality}</span>
       </p>
-      <button name="openModal">Learn more</button>
+      <Button name="openModal" text="Learn more" />
+      {/* <button name="openModal">Learn more</button> */}
     </div>
   );
 };

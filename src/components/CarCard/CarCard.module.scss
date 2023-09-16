@@ -1,0 +1,106 @@
+@import "../../scss/";
+
+.product_card {
+  width: 274px;
+
+  // @include tablet {
+
+  // }
+
+  // @include desktop {
+
+  // }
+}
+
+.img_wrapper {
+  position: relative;
+  height: 268px;
+  margin-bottom: 14px;
+}
+
+.button_icon {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background-color: transparent;
+}
+
+.icon {
+  width: 18px;
+  height: 18px;
+  stroke: $lightColor;
+
+  transition: stroke $transitionDuration $transitionTimingFunction,
+    fill $transitionDuration $transitionTimingFunction;
+
+  &:hover,
+  &:focus {
+    stroke: $hoverAccentColor;
+    fill: $hoverAccentColor;
+  }
+}
+
+.icon_is_favorite {
+  @extend .icon;
+  stroke: $accentColor;
+  fill: $accentColor;
+}
+
+.icon_no_favorite {
+  @extend .icon;
+  fill: none;
+}
+
+.img {
+  width: 274px;
+  height: 268px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+.heading_group {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.heading {
+  flex-grow: 1;
+  font-size: $headingFontSize;
+  font-weight: $fontWeightMedium;
+  line-height: 24px;
+}
+
+.heading_accent {
+  color: $accentColor;
+}
+
+.heading_price {
+  @extend .heading;
+  flex-grow: 0;
+}
+
+.car_info {
+  color: $secondaryFontColor;
+  line-height: 18px;
+}
+
+// .car_info_point:not(:last-child)::after {
+//   content: "";
+//   position: relative;
+//   bottom: -2px;
+//   display: inline-block;
+//   width: 1px;
+//   height: 16px;
+//   background-color: $secondaryFontColor;
+//   margin: 0 6px;
+// }
+
+.car_info_point:not(:last-child) {
+  border-right: 1px solid $secondaryFontColor;
+  padding-right: 6px;
+}
+
+.car_info_point:not(:first-child) {
+  padding-left: 6px;
+}

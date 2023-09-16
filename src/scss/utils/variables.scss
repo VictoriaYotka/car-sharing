@@ -1,19 +1,22 @@
+// fonst vars
 $mainFont: "Manrope", sans-serif;
-$secondaryFont: "Manrope", sans-serif;
+// $secondaryFont: "Manrope", sans-serif;
 $fontWeightRegular: 400;
 $fontWeightMedium: 500;
 $fontWeightSemiBold: 600;
 
-$mainFontSize: 14px;
-$SecondaryFontSize: 16px;
+$mainFontSize: 12px;
+$headingFontSize: 16px;
 
+// colors vars
 $mainFontColor: #121417;
-$secondaryFontColor: #8a8a89;
+// $secondaryFontColor: #8a8a89;
+$secondaryFontColor: rgba(18, 20, 23, 0.5);
 $accentColor: #3470ff;
 $hoverAccentColor: #0b44cd;
-$optionsColor: #f7f7fb;
+$lightColor: rgba(255, 255, 255, 0.8);
+// $optionsColor: #f7f7fb;
 
 // Transition vars
-
 $transitionDuration: 250ms;
-$transitionTimingFunction: cubic-bezier(0.4, 0, 0.2, 1);
+$transitionTimingFunction: cubic-bezier(0.1, 0.7, 1, 0.1);

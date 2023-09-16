@@ -1,35 +1,13 @@
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { updateFavorite } from "../../redux/operations/carsOperations";
+import { shallowEqual, useSelector } from "react-redux";
 import CarCard from "../CarCard/CarCard";
+import css from "./CarsList.module.scss";
 import PropTypes from "prop-types";
 
 const CarsList = ({ selector }) => {
   const cars = useSelector(selector, shallowEqual);
-  const dispatch = useDispatch();
-
-  const handleClick = (e) => {
-    if (e.target.name === "openModal" || e.target.name === "updateFavorite") {
-      const { id } = e.target.closest("li");
-
-      if (e.target.name === "openModal") {
-        console.dir(e.target.name);
-      }
-
-      if (e.target.name === "updateFavorite") {
-        let carToUpdateFavorite = cars.find((car) => car.id === id);
-        const { isFavorite } = carToUpdateFavorite;
-        carToUpdateFavorite = {
-          ...carToUpdateFavorite,
-          isFavorite: !isFavorite,
-        };
-
-        dispatch(updateFavorite(carToUpdateFavorite));
-      }
-    }
-  };
 
   return (
-    <ul onClick={handleClick}>
+    <ul className={css.list}>
       {cars.map((car) => {
         const {
           id,
@@ -50,8 +28,9 @@ const CarsList = ({ selector }) => {
         const [, city, country] = address.split(",");
 
         return (
-          <li key={id} id={id}>
+          <li key={id} id={id} className={css.item}>
             <CarCard
+              selector={selector}
               isFavorite={isFavorite}
               img={img || photoLink}
               year={year.toString()}

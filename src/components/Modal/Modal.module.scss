@@ -1,0 +1,132 @@
+@import "../../scss/";
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: $secondaryFontColor;
+
+  transition: opacity 300ms ease-out, visibility 300ms ease-out;
+}
+
+.modal {
+  position: relative;
+  top: 20px;
+  left: 0;
+  min-height: 572px;
+  max-width: 541px;
+  padding: 40px;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+
+  background-color: $lightColor;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
+    0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+}
+
+.button_icon {
+  background-color: transparent;
+}
+
+.icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+
+  stroke: $mainFontColor;
+
+  transition: background-color $transitionDuration $transitionTimingFunction;
+
+  &:hover,
+  &:focus {
+    stroke: $accentColor;
+  }
+}
+
+.image {
+  border-radius: 16px;
+  margin-bottom: 12px;
+}
+
+.heading {
+  font-size: 18px;
+  font-weight: $fontWeightMedium;
+  line-height: 24px;
+}
+
+.heading_accent {
+  color: $accentColor;
+}
+
+.car_info {
+  margin-bottom: 14px;
+  color: $secondaryFontColor;
+  line-height: 18px;
+}
+
+.car_topic_info {
+  @extend .car_info;
+  margin-bottom: 4px;
+}
+
+.car_topic_info_last {
+  @extend .car_info;
+  margin-bottom: 24px;
+}
+
+.car_info_point:not(:last-child) {
+  border-right: 1px solid $secondaryFontColor;
+  padding-right: 6px;
+}
+
+.car_info_point:not(:first-child) {
+  padding-left: 6px;
+}
+
+.car_descr {
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.topic_heading {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.conditions_descr {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.conditions_point {
+  padding: 7px 14px;
+  line-height: 18px;
+  background-color: $lightBackgroundColor;
+  border-radius: 35px;
+}
+
+.phone_link {
+  display: inline-block;
+  height: 44px;
+}

@@ -17,7 +17,6 @@ const CarsList = ({ selector }) => {
 
   useEffect(() => {
     if (cars.length !== 0 && carsToShow.length === 0 && start === 0) {
-      console.log("useEff");
       setCarsToShow(cars.slice(start, end));
     }
   }, [cars, carsToShow, start, end]);

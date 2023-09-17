@@ -5,6 +5,7 @@ import css from "./CarCard.module.scss";
 import PropTypes from "prop-types";
 import { useState } from "react";
 import Button from "../Button/Button";
+import { setCurrentCar } from "../../redux/slices/carsSlice";
 
 const CarCard = ({
   selector,
@@ -35,7 +36,7 @@ const CarCard = ({
       const { id } = e.target.closest("li");
 
       if (openModalButton) {
-        console.dir(e.target.name);
+        dispatch(setCurrentCar(id));
       }
 
       if (updateFavoriteButton) {

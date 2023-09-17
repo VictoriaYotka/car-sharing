@@ -82,17 +82,6 @@
   line-height: 18px;
 }
 
-// .car_info_point:not(:last-child)::after {
-//   content: "";
-//   position: relative;
-//   bottom: -2px;
-//   display: inline-block;
-//   width: 1px;
-//   height: 16px;
-//   background-color: $secondaryFontColor;
-//   margin: 0 6px;
-// }
-
 .car_info_point:not(:last-child) {
   border-right: 1px solid $secondaryFontColor;
   padding-right: 6px;

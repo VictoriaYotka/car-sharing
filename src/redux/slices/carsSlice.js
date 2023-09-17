@@ -6,7 +6,8 @@ const initialState = {
   items: [],
   isLoading: false,
   error: null,
-  currentCar: {},
+  currentCar: "",
+  isModalOpen: false,
 };
 
 const carsSlice = createSlice({
@@ -15,6 +16,11 @@ const carsSlice = createSlice({
   reducers: {
     setCurrentCar(state, { payload }) {
       state.currentCar = payload;
+      state.isModalOpen = true;
+    },
+    removeCurrentCar(state) {
+      state.currentCar = "payload";
+      state.isModalOpen = false;
     },
   },
   extraReducers: (builder) => {
@@ -38,4 +44,4 @@ const carsSlice = createSlice({
 });
 
 export const carsReducer = carsSlice.reducer;
-export const { setCurrentCar } = carsSlice.actions;
+export const { setCurrentCar, removeCurrentCar } = carsSlice.actions;

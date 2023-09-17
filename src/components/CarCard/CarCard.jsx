@@ -3,7 +3,7 @@ import { updateFavorite } from "../../redux/operations/carsOperations";
 import icons from "../../images/icons.svg";
 import css from "./CarCard.module.scss";
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../Button/Button";
 import { setCurrentCar } from "../../redux/slices/carsSlice";
 
@@ -27,37 +27,36 @@ const CarCard = ({
 
   const [favorite, setFavorite] = useState(isFavorite);
 
-  const handleClick = (e) => {
-    const openModalButton = e.target.name === "openModal";
-    const updateFavoriteButton =
-      e.target.closest("button") &&
-      e.target.closest("button").name === "updateFavorite";
-    if (openModalButton || updateFavoriteButton) {
-      const { id } = e.target.closest("li");
+  const handleOpenModalClick = (e) => {
+    const { id } = e.target.closest("li");
+    dispatch(setCurrentCar(id));
+  };
 
-      if (openModalButton) {
-        dispatch(setCurrentCar(id));
-      }
+  const handleUpdateFavoriteClick = (e) => {
+    const { id } = e.target.closest("li");
 
-      if (updateFavoriteButton) {
-        let carToUpdateFavorite = cars.find((car) => car.id === id);
-        const { isFavorite } = carToUpdateFavorite;
-        carToUpdateFavorite = {
-          ...carToUpdateFavorite,
-          isFavorite: !isFavorite,
-        };
+    let carToUpdateFavorite = cars.find((car) => car.id === id);
+    const { isFavorite } = carToUpdateFavorite;
+    carToUpdateFavorite = {
+      ...carToUpdateFavorite,
+      isFavorite: !isFavorite,
+    };
 
-        dispatch(updateFavorite(carToUpdateFavorite))
-          .unwrap()
-          .then(() => setFavorite(!favorite));
-      }
-    }
+    dispatch(updateFavorite(carToUpdateFavorite))
+      .unwrap()
+      .then(() => {
+        setFavorite((prevState) => !prevState);
+      });
   };
 
   return (
-    <div onClick={handleClick} className={css.product_card}>
+    <div className={css.product_card}>
       <div className={css.img_wrapper}>
-        <button name="updateFavorite" className={css.button_icon}>
+        <button
+          onClick={handleUpdateFavoriteClick}
+          name="updateFavorite"
+          className={css.button_icon}
+        >
           <svg
             className={
               favorite ? `${css.icon_is_favorite}` : `${css.icon_no_favorite}`
@@ -85,7 +84,7 @@ const CarCard = ({
         <span className={css.car_info_point}>{mileage}</span>
         <span className={css.car_info_point}>{functionality}</span>
       </p>
-      <Button name="openModal" text="Learn more" />
+      <Button onClick={handleOpenModalClick} text="Learn more" />
     </div>
   );
 };

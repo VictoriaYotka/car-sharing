@@ -2,6 +2,7 @@
 
 Welcome to ukrainian Car Sharing project!
 We provide simple and comfortable environment for choosing the best car to rent all over Ukraine.
+SLAVA UKRAINI!
 
 ### Link
 

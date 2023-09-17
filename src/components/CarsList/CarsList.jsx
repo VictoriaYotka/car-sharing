@@ -5,9 +5,13 @@ import buttonCss from "../Button/Button.module.scss";
 import PropTypes from "prop-types";
 import Button from "../Button/Button";
 import { useEffect, useState } from "react";
+import AnyFavorite from "../AnyFavorite/AnyFavorite";
+import { useLocation } from "react-router";
+import NotFound from "../../pages/Not found/NotFound";
 
 const CarsList = ({ selector }) => {
   const cars = useSelector(selector, shallowEqual);
+  const location = useLocation();
 
   const CARS_PER_PAGE = 8;
 
@@ -82,6 +86,12 @@ const CarsList = ({ selector }) => {
           className={buttonCss.load_more}
         />
       )}
+
+      {carsToShow.length === 0 && location.pathname === "/favorites" && (
+        <AnyFavorite />
+      )}
+
+      {carsToShow.length === 0 && location.pathname === "/cars" && <NotFound />}
     </>
   );
 };

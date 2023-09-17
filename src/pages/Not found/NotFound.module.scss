@@ -1,20 +1,8 @@
 @import "../../scss/";
 
 .wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 1280px;
-  margin-right: auto;
-  margin-left: auto;
-  padding: 24px 48px;
-}
-
-.content {
   position: relative;
-  justify-content: center;
-  gap: 24px;
-  margin-bottom: 32px;
+  text-align: center;
 }
 
 .image {
@@ -23,6 +11,7 @@
   height: 550px;
   object-fit: cover;
   border-radius: 24px;
+  margin-bottom: 32px;
 }
 
 .paragr {
@@ -30,30 +19,19 @@
 
   left: 0;
   right: 0;
-  top: 5%;
+  top: 15%;
   text-align: center;
   font-size: 54px;
   font-weight: $fontWeightSemiBold;
   background-color: $lightTransparentColor;
 
   @include tablet {
-    top: 10%;
+    top: 20%;
     font-size: 64px;
   }
 
   @include desktop {
-    top: 15%;
+    top: 35%;
     font-size: 84px;
   }
-}
-
-.paragr_part {
-  display: block;
-}
-
-.article {
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 32px;
-  margin-bottom: 32px;
 }

@@ -7,7 +7,8 @@ const Home = () => {
     <div className={css.wrapper}>
       <div className={css.content}>
         <p className={css.paragr}>
-          Welcome to ukrainian <p> Car Sharing</p> project!
+          Welcome to ukrainian{" "}
+          <span className={css.paragr_part}> Car Sharing</span> project!
         </p>
         <img
           className={css.image}

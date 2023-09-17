@@ -5,6 +5,7 @@ import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
 import { useSelector } from "react-redux";
 import { selectIsModalOpen } from "../../redux/selectors/selectors";
+import Footer from "../../components/Footer/Footer";
 
 const SharedLayout = () => {
   const isModalOpen = useSelector(selectIsModalOpen);
@@ -17,7 +18,7 @@ const SharedLayout = () => {
           <Outlet />
         </Suspense>
       </main>
-      <footer>Footer</footer>
+      <Footer />
       {isModalOpen && <Modal />}
     </>
   );

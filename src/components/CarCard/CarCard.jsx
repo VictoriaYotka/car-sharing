@@ -3,7 +3,7 @@ import { updateFavorite } from "../../redux/operations/carsOperations";
 import icons from "../../images/icons.svg";
 import css from "./CarCard.module.scss";
 import PropTypes from "prop-types";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Button from "../Button/Button";
 import { setCurrentCar } from "../../redux/slices/carsSlice";
 

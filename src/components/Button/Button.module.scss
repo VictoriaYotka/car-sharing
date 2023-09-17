@@ -17,3 +17,23 @@
     background-color: $hoverAccentColor;
   }
 }
+
+.load_more {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  background-color: transparent;
+  color: $accentColor;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration-line: underline;
+  text-decoration-color: $secondaryFontColor;
+  text-decoration-thickness: 1px;
+
+  transition: color $transitionDuration $transitionTimingFunction;
+
+  &:hover,
+  &:focus {
+    color: $hoverAccentColor;
+  }
+}

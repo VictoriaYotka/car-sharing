@@ -107,24 +107,3 @@ CarCard.propTypes = {
   mileage: PropTypes.string,
   functionality: PropTypes.string,
 };
-
-// const {
-//             id,
-//             isFavorite,
-//             year,
-//             make,
-//             model,
-//             type,
-//             img,
-//             photoLink,
-//             description,
-//             fuelConsumption,
-//             engineSize,
-//             accessorie,
-//             functionalities,
-//             rentalPrice,
-//             rentalCompany,
-//             address,
-//             rentalConditions,
-//             mileage,
-//           } = car;

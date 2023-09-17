@@ -85,7 +85,6 @@ const CarCard = ({
         <span className={css.car_info_point}>{functionality}</span>
       </p>
       <Button name="openModal" text="Learn more" />
-      {/* <button name="openModal">Learn more</button> */}
     </div>
   );
 };

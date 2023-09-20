@@ -1,4 +1,4 @@
-import { shallowEqual, useSelector } from "react-redux";
+import { shallowEqual, useDispatch, useSelector } from "react-redux";
 import CarCard from "../CarCard/CarCard";
 import css from "./CarsList.module.scss";
 import buttonCss from "../Button/Button.module.scss";
@@ -8,9 +8,11 @@ import { useEffect, useState } from "react";
 import AnyFavorite from "../AnyFavorite/AnyFavorite";
 import { useLocation } from "react-router";
 import NotFound from "../../pages/Not found/NotFound";
+import { updateFavorite } from "../../redux/operations/carsOperations";
 
 const CarsList = ({ selector }) => {
   const cars = useSelector(selector, shallowEqual);
+  const dispatch = useDispatch();
   const location = useLocation();
 
   const CARS_PER_PAGE = 8;
@@ -25,6 +27,12 @@ const CarsList = ({ selector }) => {
     }
   }, [cars, carsToShow, start, end]);
 
+  useEffect(() => {
+    if (location.pathname === "/favorites") {
+      setCarsToShow(cars.slice(0, end));
+    }
+  }, [cars, end, location.pathname]);
+
   const handleLoadMoreClick = () => {
     setCarsToShow((prevState) => [
       ...prevState,
@@ -33,6 +41,19 @@ const CarsList = ({ selector }) => {
 
     setStart((prevState) => prevState + CARS_PER_PAGE);
     setEnd((prevState) => prevState + CARS_PER_PAGE);
+  };
+
+  const handleUpdateFavoriteClick = (e) => {
+    const { id } = e.target.closest("li");
+
+    let carToUpdateFavorite = cars.find((car) => car.id === id);
+    const { isFavorite } = carToUpdateFavorite;
+    carToUpdateFavorite = {
+      ...carToUpdateFavorite,
+      isFavorite: !isFavorite,
+    };
+
+    dispatch(updateFavorite(carToUpdateFavorite));
   };
 
   return (
@@ -60,7 +81,7 @@ const CarsList = ({ selector }) => {
           return (
             <li key={id} id={id} className={css.item}>
               <CarCard
-                selector={selector}
+                handleUpdateFavoriteClick={handleUpdateFavoriteClick}
                 isFavorite={isFavorite}
                 img={img || photoLink}
                 year={year.toString()}

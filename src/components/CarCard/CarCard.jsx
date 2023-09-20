@@ -1,5 +1,4 @@
-import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { updateFavorite } from "../../redux/operations/carsOperations";
+import { useDispatch } from "react-redux";
 import icons from "../../images/icons.svg";
 import css from "./CarCard.module.scss";
 import PropTypes from "prop-types";
@@ -8,7 +7,7 @@ import Button from "../Button/Button";
 import { setCurrentCar } from "../../redux/slices/carsSlice";
 
 const CarCard = ({
-  selector,
+  handleUpdateFavoriteClick,
   isFavorite,
   img,
   year,
@@ -23,7 +22,6 @@ const CarCard = ({
   functionality,
 }) => {
   const dispatch = useDispatch();
-  const cars = useSelector(selector, shallowEqual);
 
   const [favorite, setFavorite] = useState(isFavorite);
 
@@ -32,21 +30,8 @@ const CarCard = ({
     dispatch(setCurrentCar(id));
   };
 
-  const handleUpdateFavoriteClick = (e) => {
-    const { id } = e.target.closest("li");
-
-    let carToUpdateFavorite = cars.find((car) => car.id === id);
-    const { isFavorite } = carToUpdateFavorite;
-    carToUpdateFavorite = {
-      ...carToUpdateFavorite,
-      isFavorite: !isFavorite,
-    };
-
-    dispatch(updateFavorite(carToUpdateFavorite))
-      .unwrap()
-      .then(() => {
-        setFavorite((prevState) => !prevState);
-      });
+  const handleSvgClick = () => {
+    setFavorite((prevState) => !prevState);
   };
 
   return (
@@ -58,6 +43,7 @@ const CarCard = ({
           className={css.button_icon}
         >
           <svg
+            onClick={handleSvgClick}
             className={
               favorite ? `${css.icon_is_favorite}` : `${css.icon_no_favorite}`
             }
@@ -92,7 +78,7 @@ const CarCard = ({
 export default CarCard;
 
 CarCard.propTypes = {
-  selector: PropTypes.func,
+  handleUpdateFavoriteClick: PropTypes.func,
   isFavorite: PropTypes.bool,
   img: PropTypes.string,
   year: PropTypes.string,

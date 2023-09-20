@@ -7,7 +7,11 @@
   max-width: 1280px;
   margin-right: auto;
   margin-left: auto;
-  padding: 24px 48px;
+  padding: 24px 12px;
+
+  @include tablet {
+    padding: 24px 48px;
+  }
 }
 
 .content {
@@ -25,16 +29,21 @@
   border-radius: 24px;
 }
 
-.paragr {
+.backprop {
   position: absolute;
 
   left: 0;
   right: 0;
   top: 5%;
   text-align: center;
-  font-size: 54px;
-  font-weight: $fontWeightSemiBold;
+  padding: 24px 12px;
   background-color: $lightTransparentColor;
+}
+
+.paragr {
+  font-size: 44px;
+  font-weight: $fontWeightSemiBold;
+  margin-bottom: 24px;
 
   @include tablet {
     top: 10%;
@@ -49,6 +58,7 @@
 
 .paragr_part {
   display: block;
+  color: $accentColor;
 }
 
 .article {

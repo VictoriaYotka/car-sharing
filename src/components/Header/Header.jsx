@@ -4,9 +4,9 @@ import css from "./Header.module.scss";
 const Header = () => {
   return (
     <header className={css.header}>
-      <span className={css.logo}>
+      <p className={css.logo}>
         Car <span className={css.logo_part}>Sharing</span>
-      </span>
+      </p>
       <nav className={css.nav}>
         <NavLink to="/">Home</NavLink>
         <NavLink to="/cars">Cars</NavLink>

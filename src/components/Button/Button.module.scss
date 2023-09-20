@@ -18,6 +18,12 @@
   }
 }
 
+.homepage_button {
+  @extend .button;
+  padding: 16px 98px;
+  font-size: $headingFontSize;
+}
+
 .load_more {
   display: flex;
   margin-right: auto;

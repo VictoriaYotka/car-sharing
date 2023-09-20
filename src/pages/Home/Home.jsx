@@ -1,15 +1,22 @@
 import { NavLink } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import css from "./Home.module.scss";
+import buttonCss from "../../components/Button/Button.module.scss";
 
 const Home = () => {
   return (
     <div className={css.wrapper}>
       <div className={css.content}>
-        <p className={css.paragr}>
-          Welcome to ukrainian{" "}
-          <span className={css.paragr_part}> Car Sharing</span> project!
-        </p>
+        <div className={css.backprop}>
+          <p className={css.paragr}>
+            Welcome to ukrainian{" "}
+            <span className={css.paragr_part}> Car Sharing</span> project!
+          </p>
+          <NavLink to="/cars">
+            <Button text="Start now" className={buttonCss.homepage_button} />
+          </NavLink>
+        </div>
+
         <img
           className={css.image}
           src="https://images.pexels.com/photos/1213294/pexels-photo-1213294.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
@@ -30,9 +37,6 @@ const Home = () => {
         the simplicity of using an app to unlock the car in real time, to
         meeting the owner of the car in order to exchange keys.
       </div>
-      <NavLink to="/cars">
-        <Button text="Start now" />
-      </NavLink>
     </div>
   );
 };

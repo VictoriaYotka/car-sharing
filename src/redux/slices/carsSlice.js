@@ -22,6 +22,12 @@ const carsSlice = createSlice({
       state.currentCar = "payload";
       state.isModalOpen = false;
     },
+    setFilter(state, { payload }) {
+      state.filter = payload;
+    },
+    removeFilter(state) {
+      state.filter = "";
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -44,4 +50,5 @@ const carsSlice = createSlice({
 });
 
 export const carsReducer = carsSlice.reducer;
-export const { setCurrentCar, removeCurrentCar } = carsSlice.actions;
+export const { setCurrentCar, removeCurrentCar, setFilter, removeFilter } =
+  carsSlice.actions;

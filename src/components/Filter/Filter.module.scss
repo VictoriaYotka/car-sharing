@@ -1,0 +1,70 @@
+@import "../../scss/";
+
+.wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  margin-bottom: 44px;
+  padding: 0 24px;
+  max-width: 1280px;
+}
+
+.button_icon {
+  display: block;
+  margin-right: 48px;
+  margin-left: auto;
+  margin-bottom: 24px;
+  background-color: transparent;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.select_wrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 18px;
+
+  margin-bottom: 36px;
+}
+
+.input_wrapper {
+  position: relative;
+  display: flex;
+  gap: 24px;
+  margin-bottom: 36px;
+}
+
+.label {
+  position: absolute;
+  top: -24px;
+  left: 0;
+
+  display: block;
+  color: $secondaryFontColor;
+  font-size: 14px;
+  font-weight: $fontWeightMedium;
+  line-height: 18px;
+}
+
+.select {
+  width: 224px;
+}
+
+.input {
+  width: 160px;
+  height: 44px;
+  padding: 8px 24px;
+  border-radius: 4px;
+  outline: none;
+  border: 1px solid hsl(0, 0%, 80%);
+  font-size: $mainFontSize;
+}
+
+.button_wrapper {
+  display: flex;
+  justify-content: space-around;
+}

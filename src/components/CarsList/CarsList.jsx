@@ -9,6 +9,8 @@ import AnyFavorite from "../AnyFavorite/AnyFavorite";
 import { useLocation } from "react-router";
 import NotFound from "../../pages/Not found/NotFound";
 import { updateFavorite } from "../../redux/operations/carsOperations";
+import Filter from "../Filter/Filter";
+import { setFilter } from "../../redux/slices/carsSlice";
 
 const CarsList = ({ selector }) => {
   const cars = useSelector(selector, shallowEqual);
@@ -56,8 +58,38 @@ const CarsList = ({ selector }) => {
     dispatch(updateFavorite(carToUpdateFavorite));
   };
 
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    const brand = e.target.elements.brand;
+    const price = e.target.elements.price;
+    const min = e.target.elements.minMileage;
+    const max = e.target.elements.maxMileage;
+
+    if (
+      brand.value === "" &&
+      price.value === "" &&
+      min.value === "" &&
+      max.value === ""
+    ) {
+      return;
+    }
+
+    const filterObj = {
+      brand,
+      price,
+      min,
+      max,
+    };
+
+    console.log(filterObj);
+
+    dispatch(setFilter(filterObj));
+  };
+
   return (
     <>
+      <Filter handleFormSubmit={handleFormSubmit} />
       <ul className={css.list}>
         {carsToShow.map((car) => {
           const {

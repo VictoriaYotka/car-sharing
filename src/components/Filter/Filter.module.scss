@@ -21,6 +21,13 @@
   height: 24px;
 }
 
+.form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 24px;
+}
+
 .select_wrapper {
   position: relative;
   display: flex;
@@ -55,7 +62,7 @@
 }
 
 .input {
-  width: 160px;
+  width: 120px;
   height: 44px;
   padding: 8px 24px;
   border-radius: 4px;
@@ -66,5 +73,7 @@
 
 .button_wrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
+  gap: 8px;
 }

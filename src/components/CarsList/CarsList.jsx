@@ -22,6 +22,7 @@ const CarsList = ({ selector }) => {
   const [start, setStart] = useState(0);
   const [end, setEnd] = useState(CARS_PER_PAGE);
   const [carsToShow, setCarsToShow] = useState(() => cars.slice(start, end));
+  const [selectBrandValue, setSelectBrandValue] = useState(null);
 
   useEffect(() => {
     if (cars.length !== 0 && carsToShow.length === 0 && start === 0) {
@@ -58,38 +59,51 @@ const CarsList = ({ selector }) => {
     dispatch(updateFavorite(carToUpdateFavorite));
   };
 
-  const handleFormSubmit = (e) => {
+  const handleFilterFormSubmit = (e) => {
     e.preventDefault();
 
-    const brand = e.target.elements.brand;
-    const price = e.target.elements.price;
-    const min = e.target.elements.minMileage;
-    const max = e.target.elements.maxMileage;
+    const brand = selectBrandValue.map(({ value }) => value);
+    const minPrice = e.target.elements.minPrice.value;
+    const maxPrice = e.target.elements.maxPrice.value;
+    const minMileage = e.target.elements.minMileage.value;
+    const maxMileage = e.target.elements.maxMileage.value;
 
     if (
-      brand.value === "" &&
-      price.value === "" &&
-      min.value === "" &&
-      max.value === ""
+      brand === "" &&
+      minPrice === "" &&
+      maxPrice === "" &&
+      minMileage === "" &&
+      maxMileage === ""
     ) {
+      console.log("choose to filter!");
       return;
     }
 
     const filterObj = {
       brand,
-      price,
-      min,
-      max,
+      minPrice,
+      maxPrice,
+      minMileage,
+      maxMileage,
     };
 
     console.log(filterObj);
 
     dispatch(setFilter(filterObj));
+
+    setSelectBrandValue(null);
+    e.target.reset();
   };
 
   return (
     <>
-      <Filter handleFormSubmit={handleFormSubmit} />
+      {carsToShow && (
+        <Filter
+          handleFilterFormSubmit={handleFilterFormSubmit}
+          selectBrandValue={selectBrandValue}
+          setSelectBrandValue={setSelectBrandValue}
+        />
+      )}
       <ul className={css.list}>
         {carsToShow.map((car) => {
           const {

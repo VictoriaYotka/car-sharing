@@ -1,4 +1,9 @@
-export const selectCars = ({ cars }) => cars.items;
+export const selectCars = ({ cars }) => {
+  const list = cars.items;
+
+  return list;
+};
+// ADD FILTER HERE!!!!
 
 export const selectFavoriteCars = ({ cars }) =>
   cars.items.filter((car) => car.isFavorite);
@@ -16,15 +21,4 @@ export const selectCarBrands = ({ cars }) => {
       return [...acc, { value: el.toLowerCase(), label: el }];
     }, []);
   return uniqueBrands;
-};
-
-export const selectCarPrices = ({ cars }) => {
-  const prices = cars.items.map((car) => car.rentalPrice);
-  const uniquePrices = [...new Set(prices)]
-    .map((el) => Number(el.slice(1)))
-    .sort((a, b) => a - b)
-    .reduce((acc, el) => {
-      return [...acc, { value: el, label: el }];
-    }, []);
-  return uniquePrices;
 };

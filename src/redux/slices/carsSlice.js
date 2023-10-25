@@ -8,6 +8,7 @@ const initialState = {
   error: null,
   currentCar: "",
   isModalOpen: false,
+  filter: "",
 };
 
 const carsSlice = createSlice({
